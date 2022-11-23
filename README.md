@@ -34,7 +34,8 @@ cfdisk /dev/sda
 | :-----: | :-----: | :-----: | :-----: |
 |/mnt/boot|/dev/efi_system_partition|EFI system partition| At least 512 MiB|
 |[SWAP]|/dev/swap_partition|Linux swap|< 4G 2xmem, > 4G mem+2G |
-|/mnt|/dev/root_partition|Linux x86-64 root (/)| Remainder of the device|
+|/mnt|/dev/root_partition|Linux x86-64 root (/)| Remainder of the device|  
+
 **BIOS with MBR**
 | Mount point | Partition | Partition type | Suggested size |
 | :-----: | :-----: | :-----: | :-----: |
