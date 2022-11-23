@@ -24,12 +24,37 @@ Use **timedatectl** to ensure the system clock
 timedatectl set-ntp true
 ```
 ### Partition the disks
-List you disks and partition
-UEFI with GPT
+List you disks and partition  
+**UEFI with GPT**
 | Mount point | Partition | Partition type | Suggested size |
-| :---: | :---: | :---: | :---: |
+| :-----: | :-----: | :-----: | :-----: |
 |/mnt/boot|/dev/efi_system_partition|EFI system partition| At least 512 MiB|
 ```
 fdisk -l
 cfdisk /dev/sda
 ```
+### Format the partitions
+```
+mkfs.ext4 /dev/root_partition
+mkfs.fat -F 32 /dev/
+```
+
+## Installation
+### Git config
+```
+git config --global user.name "your name"
+git config --global user.email "your email"
+ssh-keygen -t rsa -C "your email"
+ssh -T git@github.com
+git init
+git remote add origin git@github.com:yourname/repository.git
+git rm --cached file
+git branch yourbranch
+git checkout yourbranch
+git merge yourbranch
+git push origin branch
+```
+## Post-Installation
+
+
+
