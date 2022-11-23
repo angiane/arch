@@ -123,6 +123,10 @@ killall wpa_supplicant dhcpcd
 reboot
 ```
 ## Post-Installation
+### Chang shell
+```
+chsh -s /usr/bin/zsh
+```
 ### Users and groups
 ```
 nvim /etc/profile
@@ -160,6 +164,29 @@ makepkg -si
 ```
 sudo pacman -S cronie
 systemctl enable cronie
+```
+### Display server
+```
+pacman -S xf86-video-intel xorg-server xorg-apps picom xorg-xinit
+cd ~
+nvim .xinitrc
+exec dwm
+mkdir ArchConfig
+cd ArchConfig
+git clone git@github.com:dwm.git
+git clone git@github.com:st.git
+cd dwm && sudo make clean install
+cd st && sudo make clean install
+startx
+```
+### Oh my zsh
+```
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+### Google Chrome
+```
+paru -S google-chrome
+google-chrome-stable >/dev/null 2>&1 &
 ```
 ### Git config
 ```
