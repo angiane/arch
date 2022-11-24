@@ -151,7 +151,7 @@ DHCP=yes
 ```
 ### Fonts
 ```
-sudo pacman -S man ttf-dejavu wqy-microhei adobe-source-code-pro-fonts
+sudo pacman -S man ttf-dejavu wqy-microhei adobe-source-code-pro-fonts ttf-nerd-fonts-symbols
 ```
 ### Paru
 ```
@@ -183,10 +183,33 @@ startx
 ```
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
+### Chinese input
+```
+sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-material-color fcitx5-pinyin-zhwiki fcitx5-nord 
+nvim /etc/enviroment
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus
+reboot
+fcitx5-configtool
+ctrl + space 
+```
 ### Google Chrome
 ```
 paru -S google-chrome
 google-chrome-stable >/dev/null 2>&1 &
+extensions for chrome https://github.com/FelisCatus/SwitchyOmega/releases
+proxylist https://github.com/gfwlist/gfwlist
+```
+### Clash
+```
+sudo pacman -S clash
+alias proxy="clash >/dev/null 2>&1 &; export http_proxy=http://127.0.0.1:7890; export https_proxy=http://127.0.0.1:7890; export all_proxy=socks5://127.0.0.1:7890"
+alias unproxy="pkill clash >/dev/null 2>&1 &; unset http_proxy; unset https_proxy; unset all_proxy"
+alias myip="curl -s https://httpbin.org/ip | grep origin"
+59 */3 * * * sh wget https://remote.com/clashfile -O config.yaml
 ```
 ### Git config
 ```
@@ -202,7 +225,13 @@ git checkout yourbranch
 git merge yourbranch
 git push origin branch
 ```
+### Dwm
 
+### St
+
+### Dmenu
+
+### Kvm
 
 
 
