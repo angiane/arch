@@ -57,7 +57,7 @@ swapon /dev/swap_partition
 ## Installation
 ### Install essential packages
 ```
-pacstrap -k /mnt base linux linux-firmware base-devel
+pacstrap /mnt base linux linux-firmware base-devel
 ```
 ## Configure the system
 ### Fstab
@@ -226,12 +226,19 @@ git merge yourbranch
 git push origin branch
 ```
 ### Dwm
-
+```
+git clone git@github.com:angiane/dwm.git
+```
 ### St
-
+```
+git clone git@github.com:angiane/st.git
+```
 ### Dmenu
-
+```
+git clone git@github.com:angiane/dmenu.git
+```
 ### Kvm
-
+```
+```
 
 
