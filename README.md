@@ -206,6 +206,8 @@ QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 SDL_IM_MODULE=fcitx
 GLFW_IM_MODULE=ibus
+add to dwm scripts autostart.sh
+fcitx5 -d
 reboot
 fcitx5-configtool
 ctrl + space 
