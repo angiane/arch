@@ -216,7 +216,7 @@ ctrl + space
 ```
 paru -S google-chrome
 google-chrome-stable >/dev/null 2>&1 &
-alias chrome="google-chrome-stable -force-device-scale-factor=1.2 >/dev/null 2>&1"
+alias chrome="google-chrome-stable -force-device-scale-factor=1.2 >/dev/null 2>&1 &"
 extensions for chrome https://github.com/FelisCatus/SwitchyOmega/releases
 proxylist https://github.com/gfwlist/gfwlist
 ```
