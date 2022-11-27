@@ -149,9 +149,17 @@ Name=wlan0
 [Network]
 DHCP=yes
 ```
+### Numlock 
+```
+paru -S systemd-numlockontty
+sudo systemctl enable numlockontty.service
+sudo pacman -S numlockx
+add to .xinitrc before exec dwm
+numlockx &
+```
 ### Fonts
 ```
-sudo pacman -S man ttf-dejavu wqy-microhei adobe-source-code-pro-fonts ttf-nerd-fonts-symbols
+sudo pacman -S man ttf-dejavu wqy-microhei adobe-source-code-pro-fonts ttf-nerd-fonts-symbols-2048-em
 ```
 ### Paru
 ```
@@ -165,14 +173,20 @@ makepkg -si
 sudo pacman -S cronie
 systemctl enable cronie
 ```
+### Localization
+```
+add to .xinitrc
+export LANG=zh_CN.UTF-8
+export LANGUAGE=zh_CN:en_US
+```
 ### Display server
 ```
-pacman -S xf86-video-intel xorg-server xorg-apps picom xorg-xinit
+pacman -S xf86-video-intel nvidia xorg-server xorg-apps picom xorg-xinit
 cd ~
 nvim .xinitrc
 exec dwm
-mkdir ArchConfig
-cd ArchConfig
+mkdir Arch
+cd Arch
 git clone git@github.com:dwm.git
 git clone git@github.com:st.git
 cd dwm && sudo make clean install
@@ -209,7 +223,7 @@ sudo pacman -S clash
 alias proxy="clash >/dev/null 2>&1 &; export http_proxy=http://127.0.0.1:7890; export https_proxy=http://127.0.0.1:7890; export all_proxy=socks5://127.0.0.1:7890"
 alias unproxy="pkill clash >/dev/null 2>&1 &; unset http_proxy; unset https_proxy; unset all_proxy"
 alias myip="curl -s https://httpbin.org/ip | grep origin"
-59 */3 * * * sh wget https://remote.com/clashfile -O config.yaml
+59 */3 * * * wget https://remote.com/clashfile -O config.yaml
 ```
 ### Git config
 ```
