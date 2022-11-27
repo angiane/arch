@@ -255,6 +255,13 @@ git clone git@github.com:angiane/dmenu.git
 ```
 ### Kvm
 ```
+sudo pacman -S qemu libvirt iptables-nft dnsmasq bridge-utils virt-manager
+sudo systemctl enable libvirtd.service
+https://wiki.archlinux.org/title/Libvirt_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E8%AE%BE%E7%BD%AE%E6%8E%88%E6%9D%83
+add content to file
+grep kvm /etc/group
+usermod -aG libvirt $USER
+usermod -aG kvm $USER
 ```
 
 
