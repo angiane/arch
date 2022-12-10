@@ -340,6 +340,7 @@ blockcommit <- blockpull ->
 virsh blockcommit --domain win10 --base /path/win10.qcow2 --top /path/win10_increase.qcow2 --wait --verbose
 virsh blockpull --domain win10 --path /path/win10_increase.qcow2 --base /path/win10.qcow2 --wait --verbose
 virsh snapshot-delete --domain win10 nvim --metedata
+brctl show
 ```
 
 
