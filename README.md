@@ -196,6 +196,11 @@ startx
 ### Oh my zsh
 ```
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+add to .zshrc
+zsh-autosuggestions
+zsh-syntax-highlighting
 ```
 ### Chinese input
 ```
@@ -219,6 +224,12 @@ google-chrome-stable >/dev/null 2>&1 &
 alias chrome="google-chrome-stable -force-device-scale-factor=1.2 >/dev/null 2>&1 &"
 extensions for chrome https://github.com/FelisCatus/SwitchyOmega/releases
 proxylist https://github.com/gfwlist/gfwlist
+extensions Adguard
+```
+### Neovim
+```
+git clone git@github.com:angiane/nvim.git 
+sudo pacman -S nodejs npm
 ```
 ### Clash
 ```
@@ -250,9 +261,27 @@ git clone git@github.com:angiane/dwm.git
 ```
 git clone git@github.com:angiane/st.git
 ```
-### Dmenu
+### Slstatus
 ```
-git clone git@github.com:angiane/dmenu.git
+git clone git@github.com:angiane/Slstatus.git
+```
+### Acpid
+```
+sudo pacman -S acpid
+journalctl -f	https://wiki.archlinux.org/title/Acpid_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E9%85%8D%E7%BD%AE
+sudo nvim /etc/acpi/handler.sh      i modify it , but no use
+```
+### Rofi
+```
+Page https://github.com/davatorium/rofi#usage
+sudo pacman -S rofi
+mkdir -p ~/.config/rofi
+rofi -dump-config > ~/.config/rofi/config.rasi
+add something to last of the config.rasi
+@theme "/dev/null"
+copy arthur.rasi theme to file
+https://github.com/davatorium/rofi/blob/next/themes/arthur.rasi
+quit radius
 ```
 ### Kvm
 ```
@@ -263,6 +292,54 @@ add content to file
 grep kvm /etc/group
 usermod -aG libvirt $USER
 usermod -aG kvm $USER
+sudo pacman -S dmg2img p7zip libguestfs guestfs-tools
+root and other user have different pool and domain
+define store pool
+virsh pool-define-as vmdisk --type dir --target /home/yang/date
+build pool
+virsh pool-build virsh
+virsh pool-list --all
+virsh pool-start vmdisk
+virsh pool-autostart vmdisk
+virsh vol-create-as vmdisk test.qcow2 1G --format qcow2
+virsh vol-delete --pool vmdisk test.qcow2
+inactive pool
+virsh pool-destroy vmdisk
+remove pool dir
+virsh pool-delete vmdisk
+undefine pool
+virsh pool-undefine vmdisk
+qemu-img create -f qcow2 test.qcow2 1G
+qemu-img info test.qcow2
+sudo virt-df -h -d win10
+sudo guestmount -d wine10 -m /dev/sda --rw /mnt
+sudo guestunmount /mnt
+virsh dumpxml win10
+virsh edit win10
+virsh start win10
+virsh suspend win10
+virsh resume win10
+virsh shutdown win10
+virsh reboot win10
+virsh undefine win10    will remove config file 
+virsh destory win10     will remove virtual            image file need to manual remove
+virsh autostart win10   setting reboot auto start virtual   store /etc/libvirt/qemu/autostart
+virsh autostart --disable win10    quit auto start
+virsh list --all --autostart
+virt-clone -o win10 -n win10_clone_name --auto-clone
+qemu-img create -b base.img -f qcow2 increase.img
+virsh snapshot-create-as win10 win10.snap
+virsh snapshot-list win10
+qemu-img convert -O qcow2 rawfile.raw qcow2file.qcow2
+virsh snapshot-revert win10 win10.snap
+virsh snapshot-delete --domain win10 --snapshotname win10.snap
+virsh domblklist win10
+virsh snapshot-create-as --domain win10 --name win10_external --disk-only -diskspec vda,snapshot=external,file=/path/win10_external.qcow2 --atomic
+qemu-img info --backing-chain win10
+blockcommit <- blockpull ->
+virsh blockcommit --domain win10 --base /path/win10.qcow2 --top /path/win10_increase.qcow2 --wait --verbose
+virsh blockpull --domain win10 --path /path/win10_increase.qcow2 --base /path/win10.qcow2 --wait --verbose
+virsh snapshot-delete --domain win10 nvim --metedata
 ```
 
 
